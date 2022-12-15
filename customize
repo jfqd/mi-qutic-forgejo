@@ -31,6 +31,7 @@ chown -R forgejo:forgejo /home/forgejo
 echo "* Cleaning up."
 rm /root/customize
 rm -rf /root/go
+pkgin -y rm gcc10 gmake
 
 # Prepare image for provisioning
 sm-prepare-image -y
