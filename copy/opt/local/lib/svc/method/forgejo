@@ -1,0 +1,5 @@
+#!/usr/bin/bash
+
+export PATH=/home/forgejo/forgejo:${PATH}
+cd /home/forgejo/forgejo
+./gitea web 2>&1 &

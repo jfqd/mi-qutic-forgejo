@@ -1,0 +1,8 @@
+name="qutic-forgejo"
+organization="qutic development"
+brand="forgejo instance"
+version="20220708.0"
+description="qutic forgejo image"
+homepage="https://github.com/jfqd/mi-qutic-forgejo"
+users="root admin forgejo"
+base="5d05ddf0-4725-11ed-b921-9f3a63fb26fb"

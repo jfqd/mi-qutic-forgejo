@@ -1,0 +1,38 @@
+<?xml version='1.0'?>
+<!DOCTYPE service_bundle SYSTEM '/usr/share/lib/xml/dtd/service_bundle.dtd.1'>
+<service_bundle type='manifest' name='forgejo'>
+  <service name='application/forgejo' type='service' version='1'>
+    <create_default_instance enabled='false'/>
+    <single_instance/>
+    
+    <dependency name='network' grouping='require_all' restart_on='error' type='service'>
+      <service_fmri value='svc:/milestone/network:default'/>
+    </dependency>
+    <dependency name='filesystem' grouping='require_all' restart_on='error' type='service'>
+      <service_fmri value='svc:/system/filesystem/local'/>
+    </dependency>
+    
+    <exec_method name='start' type='method' exec='/opt/local/lib/svc/method/forgejo' timeout_seconds='60'>
+      <method_context>
+        <method_credential user='forgejo' group='forgejo' />
+        <method_environment>
+          <envvar name="HOME" value="/home/forgejo" />
+          <envvar name='PATH' value='/opt/local/sbin:/opt/local/bin:/usr/sbin:/usr/bin:/sbin'/>
+          <envvar name="USER" value="forgejo" />
+        </method_environment>
+      </method_context>
+    </exec_method>
+    
+    <exec_method name='stop' type='method' exec=':kill' timeout_seconds='60' />
+    
+    <property_group name="application" type="application">
+    </property_group>
+    
+    <stability value='Evolving'/>
+    <template>
+      <common_name>
+        <loctext xml:lang='C'>forgejo: Go Git Service</loctext>
+      </common_name>
+    </template>
+  </service>
+</service_bundle>

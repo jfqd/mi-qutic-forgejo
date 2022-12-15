@@ -1,0 +1,1 @@
+svcadm enable -r svc:/pkgsrc/redis:default

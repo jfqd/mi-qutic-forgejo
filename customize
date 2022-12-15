@@ -1,0 +1,36 @@
+#!/usr/bin/bash
+
+PATH=/opt/local/gnu/bin:/opt/local/bin:/opt/local/sbin:/usr/bin:/usr/sbin
+
+# Exit if any commands fail
+set -o errexit
+
+echo "* Setup forgejo user and group"
+groupadd -g 1100 forgejo
+useradd -m -s /usr/bin/false -d /home/forgejo -u 1100 -g forgejo forgejo
+passwd -N forgejo
+passwd -d forgejo
+
+echo "* Setup ssh dir"
+mkdir -p /home/forgejo/.ssh
+chmod 0750 /home/forgejo/.ssh
+chown forgejo:forgejoogs /home/forgejo/.ssh
+
+echo "* Build forgejo";
+export GOPATH=/home/forgejo/go
+mkdir "${GOPATH}"
+
+cd "${GOPATH}"
+git clone https://codeberg.org/forgejo/forgejo.git forgejo
+cd forgejo
+TAGS="bindata" make build
+
+chown -R forgejo:forgejo /home/forgejo
+
+# Clean up
+echo "* Cleaning up."
+rm /root/customize
+rm -rf /root/go
+
+# Prepare image for provisioning
+sm-prepare-image -y
