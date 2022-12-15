@@ -14,7 +14,7 @@ passwd -d forgejo
 echo "* Setup ssh dir"
 mkdir -p /home/forgejo/.ssh
 chmod 0750 /home/forgejo/.ssh
-chown forgejo:forgejoogs /home/forgejo/.ssh
+chown forgejo:forgejo /home/forgejo/.ssh
 
 echo "* Build forgejo";
 export GOPATH=/home/forgejo/go
