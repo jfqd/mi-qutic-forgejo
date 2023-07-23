@@ -1,5 +1,5 @@
 #!/usr/bin/bash
 
-export PATH=/home/forgejo/forgejo:${PATH}
-cd /home/forgejo/forgejo
+export PATH=/home/forgejo/go/forgejo:${PATH}
+cd /home/forgejo/go/forgejo
 ./gitea web 2>&1 &
