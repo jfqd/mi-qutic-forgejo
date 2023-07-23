@@ -22,3 +22,5 @@ svcadm restart svc:/network/ssh:default
 
 svccfg import /opt/local/lib/svc/manifest/forgejo.xml
 svcadm enable -r svc:/application/forgejo:default
+
+ln -nfs /var/svc/log/application-forgejo:default.log /var/log/gitea_log
