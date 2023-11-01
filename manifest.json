@@ -1,6 +1,6 @@
 {
   "name":         "qutic-forgejo",
-  "version":      "20220708.0",
+  "version":      "20230910.0",
   "description":  "qutic forgejo image",
   "organization": "qutic development",
   "brand":        "forgejo instance",

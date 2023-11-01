@@ -1,7 +1,7 @@
 name="qutic-forgejo"
 organization="qutic development"
 brand="forgejo instance"
-version="20220708.0"
+version="20230910.0"
 description="qutic forgejo image"
 homepage="https://github.com/jfqd/mi-qutic-forgejo"
 users="root admin forgejo"
