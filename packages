@@ -5,5 +5,5 @@ nginx
 nodejs
 npm
 zip
-gcc10
+gcc12
 gmake
