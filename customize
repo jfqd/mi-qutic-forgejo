@@ -2,6 +2,8 @@
 
 PATH=/opt/local/gnu/bin:/opt/local/bin:/opt/local/sbin:/usr/bin:/usr/sbin
 
+FORGEJO_VERSION="v1.20.5-0"
+
 # Exit if any commands fail
 set -o errexit
 
@@ -23,6 +25,8 @@ mkdir "${GOPATH}"
 cd "${GOPATH}"
 git clone https://codeberg.org/forgejo/forgejo.git forgejo
 cd forgejo
+git fetch --tags
+git checkout "${FORGEJO_VERSION}"
 TAGS="bindata" make build
 
 chown -R forgejo:forgejo /home/forgejo
@@ -31,7 +35,7 @@ chown -R forgejo:forgejo /home/forgejo
 echo "* Cleaning up."
 rm /root/customize
 rm -rf /root/go
-pkgin -y rm gcc10 gmake
+pkgin -y rm gcc12 gmake
 
 # Prepare image for provisioning
 sm-prepare-image -y
