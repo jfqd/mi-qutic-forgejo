@@ -3,7 +3,6 @@ go
 redis
 nginx
 nodejs
-npm
 zip
 gcc12
 gmake
